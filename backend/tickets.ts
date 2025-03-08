@@ -16,7 +16,7 @@ const createTicket = async (request: Request, response: Response): Promise<void>
     response.status(404).json({error: 'The event has not been found.'})
   }
 
-  if (eventId.available_seats <= 0) {
+  if (event.availableSeats <= 0) {
     response.status(409).json({error: 'There are no more seats available.'})
   }
 
