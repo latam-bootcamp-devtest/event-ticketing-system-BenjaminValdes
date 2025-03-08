@@ -24,11 +24,12 @@ const getAllEvents = async (request: Request, response: Response): Promise<void>
     const startIndex = (page - 1) * pageSize
     const endIndex = startIndex + pageSize - 1
     const paginatedEvents = allEvents.slice(startIndex, endIndex)
+    const totalPages = Math.ceil(totalEvents / pageSize)
 
     response.status(200).json({
       currentPage: page,
       pageSize,
-      totalPages: Math.ceil(result.rows.length / pageSize),
+      totalPages,
       events: paginatedEvents,
     })
   } catch (error) {
