@@ -1,4 +1,3 @@
-import { Events } from './node_modules/@types/pg/index.d';
 import { Request, Response } from 'express';
 import { pool } from './pool'
 

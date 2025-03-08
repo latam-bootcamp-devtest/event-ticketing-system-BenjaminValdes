@@ -1,7 +1,6 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
 import EventsFunctions from './events'
 import TicketsFunctions from './tickets'
-import 'dotenv/config'
 
 const router = Router()
 
