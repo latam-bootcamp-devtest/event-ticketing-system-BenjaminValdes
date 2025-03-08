@@ -53,7 +53,7 @@ const deleteTicket = async (request: Request, response: Response): Promise<void>
   const id = parseInt(request.params.id)
 
   const ticket = await getTicketById(id)
-  const event = await EventsFunctions.getEventById(id)
+  const event = await EventsFunctions.getEventById(ticket.eventId)
   
   if (!ticket) {
     response.status(404).json({error: 'The ticket has not been found.'})
