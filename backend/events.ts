@@ -75,27 +75,25 @@ const createEvent = async (request: Request, response: Response): Promise<void> 
   }
 }
 
-const reduceAvailableSeats = async (eventId: number): Promise<Event> => {
+const reduceAvailableSeats = async (eventId: number): Promise<void> => {
   try {
     const event = await getEventById(eventId)
     const availableSeats = event.availableSeats
     const newAvailableSeats = availableSeats - 1
 
     const result = await pool.query('UPDATE event SET available_seats = $1 WHERE id = $2', [newAvailableSeats, eventId])
-    return result.rows[0]
   } catch (error) {
     console.error(error)
   }
 }
 
-const increaseAvailableSeats = async (eventId: number): Promise<Event> => {
+const increaseAvailableSeats = async (eventId: number): Promise<void> => {
   try {
     const event = await getEventById(eventId)
     const availableSeats = event.availableSeats
     const newAvailableSeats = availableSeats + 1
 
     const result = await pool.query('UPDATE event SET available_seats = $1 WHERE id = $2', [newAvailableSeats, eventId])
-    return result.rows[0]
   } catch (error) {
     console.error(error)
   }
